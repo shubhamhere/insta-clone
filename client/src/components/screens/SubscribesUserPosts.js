@@ -2,6 +2,7 @@ import React,{useState,useEffect,useContext} from 'react'
 import {UserContext} from '../../App'
 import {Link} from 'react-router-dom'
 const Home  = ()=>{
+    
     const [data,setData] = useState([])
     const {state,dispatch} = useContext(UserContext)
     useEffect(()=>{
@@ -117,7 +118,9 @@ const Home  = ()=>{
                        <div className="card  home-card xd" key={item._id}>
                             <h5 style={{padding:"5px"}}><Link to={item.postedBy._id !== state._id?"/profile/"+item.postedBy._id :"/profile"  }>{item.postedBy.name}</Link> {item.postedBy._id === state._id 
                             && <i className="material-icons" style={{
-                                float:"right"
+                                float:"right",
+                                color:"red"
+
                             }} 
                             onClick={()=>deletePost(item._id)}
                             >delete</i>
@@ -127,20 +130,20 @@ const Home  = ()=>{
                                 <img src={item.photo}/>
                             </div>
                             <div className="card-content">
-                            <i className="material-icons" style={{color:"red"}}>favorite</i>
+                           
                             {item.likes.includes(state._id)
                             ? 
-                             <i className="material-icons"
+                             <i className="material-icons" style={{color:"red"}}
                                     onClick={()=>{unlikePost(item._id)}}
-                              >thumb_down</i>
+                              >favorite</i>
                             : 
-                            <i className="material-icons"
+                            <i className="material-icons" style={{color:"black"}}
                             onClick={()=>{likePost(item._id)}}
-                            >thumb_up</i>
+                            >favorite</i>
                             }
                             
                            
-                                <h6>{item.likes.length} likes</h6>
+                                <h6  style={{ fontWeight: "500" }} >{item.likes.length} likes</h6>
                                 <h6>{item.title}</h6>
                                 <p>{item.body}</p>
                                 {

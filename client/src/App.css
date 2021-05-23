@@ -1,7 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
 
 a{
-  color: rgb(3, 38, 153) !important;
+  font-weight: 600!important;
+  padding: 20px 0px 10px 30px;
+  text-transform: capitalize;
+  color: rgb(29, 49, 228) !important;
+}
+a:hover{
+  color: #000!important;
 }
 blue.darken-1 {
   margin-top: 16px;
@@ -119,7 +125,8 @@ nav ul a {
   -webkit-transition: background-color .3s;
   transition: background-color .3s;
   font-size: 1rem;
-  color: #fff;
+  font-weight: 400!important;
+  /* color: #fff; */
   display: block;
   padding: 0px 9px!important;
   cursor: pointer;
@@ -127,16 +134,36 @@ nav ul a {
 h5 {
   font-size: 1.3rem!important;
   line-height: 110%;
-  margin: 0p;
+  margin-top: 10px;
 }
-h4{
-  font-size: 0.9rem;
+h4 {
+  font-size: 2.28rem!important;
+  line-height: 110%;
+  margin: 1.52rem 0 .912rem 0;
 }
 h6{
+  text-transform: capitalize;
   font-size: 0.8rem;
   font-weight: 500;
+  margin: .7666666667rem 0 .46rem 0.7rem;
 }
 .proffxd{
   font-size: 50%;
 }
+}
+.card .card-content p {
+  text-transform: capitalize;
+  color: darkred;
+  margin: 0.7rem;
+  font-weight: 600;
+}
+.gg{
+ display: grid;
+ place-items: center;
+}
+h6 {
+  text-transform: capitalize;
+  font-size: 1.15rem;
+  line-height: 110%;
+  margin: .7666666667rem 0 .46rem 0.6rem;
 }

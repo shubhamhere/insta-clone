@@ -81,15 +81,15 @@ const Profile  = ()=>{
    return (
        <>
        {userProfile ?
-       <div style={{maxWidth:"550px",margin:"0px auto"}}>
-           <div style={{
+       <div className="profile"  style={{maxWidth:"550px",margin:"0px auto"}}>
+           <div className="bete" style={{
                display:"flex",
                justifyContent:"space-around",
                margin:"18px 0px",
                borderBottom:"1px solid grey"
            }}>
                <div>
-                   <img style={{width:"160px",height:"160px",borderRadius:"80px"}}
+                   <img className="imagep" style={{width:"160px",height:"160px",borderRadius:"80px"}}
                    src={userProfile.user.pic}
                    />
                </div>
@@ -140,7 +140,7 @@ const Profile  = ()=>{
        </div>
        
        
-       : <h2>loading...!</h2>}
+       : <h2 className="gg">loading...!</h2>}
        
        </>
    )

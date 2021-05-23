@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { UserContext } from '../../App'
+import M from 'materialize-css'
 import { Link } from 'react-router-dom' //link helps page to not reload 
 const Home = () => {
-    const [data, setData] = useState([]) 
+    const [data, setData] = useState([])
     const { state, dispatch } = useContext(UserContext)
     useEffect(() => {
         fetch('/allpost', {
@@ -89,7 +90,7 @@ const Home = () => {
                     }
                 })
                 setData(newData)
-                
+
             }).catch(err => {
                 console.log(err)
             })
@@ -110,7 +111,7 @@ const Home = () => {
                 setData(newData)
             })
     }
- 
+
     // const deleteComment = (postid, commentid) => {
 
     //     fetch(`/deletecomment/${postid}/${commentid}`, {
@@ -136,13 +137,14 @@ const Home = () => {
 
     return (
         <div className="home">
-            {   
+            {
                 data.map(item => {
                     return (
                         <div className="card home-card hello" key={item._id}>
                             <h5 style={{ padding: "5px" }}><Link to={item.postedBy._id !== state._id ? "/profile/" + item.postedBy._id : "/profile"}>{item.postedBy.name}</Link> {item.postedBy._id === state._id
                                 && <i className="material-icons" style={{
-                                    float: "right"
+                                    float: "right",
+                                    color:"red"
                                 }}
                                     onClick={() => deletePost(item._id)}
                                 >delete</i>
@@ -152,20 +154,20 @@ const Home = () => {
                                 <img src={item.photo} />
                             </div>
                             <div className="card-content">
-                                <i className="material-icons" style={{ color: "red" }}>favorite</i>
+
                                 {item.likes.includes(state._id)
                                     ?
-                                    <i className="material-icons"
+                                    <i className="material-icons" style={{ color: "red" }}
                                         onClick={() => { unlikePost(item._id) }}
-                                    >thumb_down</i>
+                                    >favorite</i>
                                     :
-                                    <i className="material-icons"
+                                    <i className="material-icons" style={{ color: "black" }}
                                         onClick={() => { likePost(item._id) }}
-                                    >thumb_up</i>
+                                    >favorite</i>
                                 }
 
 
-                                <h6>{item.likes.length} likes</h6>
+                                <h6  style={{ fontWeight: "500" }} >{item.likes.length} likes</h6>
                                 <h6>{item.title}</h6>
                                 <p>{item.body}</p>
                                 {
@@ -176,14 +178,14 @@ const Home = () => {
                                     })
                                 }
                                 <form onSubmit={(e) => {
+
                                     e.preventDefault()
                                     makeComment(e.target[0].value, item._id)
-                                     setData('')
+                                    setData([]);
+                                    M.toast({html:"comment sent sucessfully",classes:"#43a047 green darken-1"})
                                 }}>
                                     <input type="text" placeholder="add a comment" />
                                 </form>
-
-
                                 {/* <h6 key={record._id}>
                                     <span style={{ fontWeight: "500" }}>
                                         {record.postedBy.name}
@@ -202,7 +204,6 @@ const Home = () => {
                                             </i>
                                         )}
                                 </h6> */}
-
                             </div>
                         </div>
                     )
