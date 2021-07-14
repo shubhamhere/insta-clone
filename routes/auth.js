@@ -1,4 +1,8 @@
 const express = require('express')
+const cors = require('cors')
+app.use(cors({
+    origin:"*",
+}))
 const router = express.Router()
 const mongoose = require('mongoose')
 const User = mongoose.model("User")
